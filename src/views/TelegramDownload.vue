@@ -177,14 +177,17 @@
 </template>
 
 <script>
+import { contactConfig } from '@/config/contact.js'
+
 export default {
   name: 'TelegramDownload',
   methods: {
     handleContact() {
+      contactConfig.openTelegram()
       this.$message({
-        message: '请通过 Telegram 联系我们：@your_telegram_handle',
-        type: 'info',
-        duration: 3000
+        message: contactConfig.getContactMessage(),
+        type: 'success',
+        duration: 2000
       })
     }
   }

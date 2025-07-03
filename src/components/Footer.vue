@@ -14,7 +14,7 @@
             让您的Telegram使用体验更加高效便捷。
           </p>
           <div class="mt-6 flex space-x-4">
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <a :href="contactConfig.telegram.url" target="_blank" class="text-gray-400 hover:text-white transition-colors">
               <span class="sr-only">Telegram</span>
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0C5.374 0 0 5.373 0 12s5.374 12 12 12 12-5.373 12-12S18.626 0 12 0zm5.568 8.16c-.18 1.896-.962 6.502-1.359 8.627-.168.9-.499 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903l-3.319-2.463c-.895-.659-.302-1.784.64-2.724l3.803-3.802c.331-.331.111-.52-.205-.302L9.74 11.185c-1.121.685-2.432.926-3.84.673-.901-.162-1.785-.516-2.463-.9-.901-.512-.901-1.784 0-2.295L17.28 7.02c1.023-.685 2.432.302 1.288 1.14z"/>
@@ -60,8 +60,8 @@
           </h3>
           <ul class="space-y-3">
             <li>
-              <a href="#" class="text-gray-300 hover:text-white transition-colors">
-                Telegram
+              <a :href="contactConfig.telegram.url" target="_blank" class="text-gray-300 hover:text-white transition-colors">
+                Telegram ({{ contactConfig.telegram.displayName }})
               </a>
             </li>
             <li>
@@ -99,8 +99,15 @@
 </template>
 
 <script>
+import { contactConfig } from '@/config/contact.js'
+
 export default {
   name: 'Footer',
+  data() {
+    return {
+      contactConfig
+    }
+  },
   computed: {
     currentYear() {
       return new Date().getFullYear()

@@ -90,6 +90,8 @@ iamxmm/
 │   ├── components/        # 公共组件
 │   │   ├── NavBar.vue     # 导航栏
 │   │   └── Footer.vue     # 页脚
+│   ├── config/            # 配置文件
+│   │   └── contact.js     # 联系方式配置
 │   ├── views/             # 页面组件
 │   │   ├── Home.vue       # 首页
 │   │   ├── TelegramForward.vue    # 消息转发页
@@ -145,17 +147,29 @@ iamxmm/
 ## 🔧 自定义配置
 
 ### 联系方式配置
-在各组件的 `handleContact()` 方法中修改联系方式：
+项目采用全局配置方式，所有组件共享配置文件 `src/config/contact.js`：
 
 ```javascript
-handleContact() {
-  this.$message({
-    message: '请通过 Telegram 联系我们：@your_telegram_handle',
-    type: 'info',
-    duration: 3000
-  })
+export const contactConfig = {
+  telegram: {
+    username: 'thismanisok',
+    url: 'https://t.me/thismanisok',
+    displayName: '@thismanisok'
+  },
+  
+  // 联系方法
+  openTelegram() {
+    window.open(this.telegram.url, '_blank')
+  },
+  
+  // 获取联系提示消息
+  getContactMessage() {
+    return `点击即可跳转到 Telegram 联系我们：${this.telegram.displayName}`
+  }
 }
 ```
+
+如需修改联系方式，只需修改此配置文件即可，所有页面会自动更新。
 
 ### 样式定制
 在 `src/assets/style.css` 中修改全局样式
@@ -187,8 +201,8 @@ handleContact() {
 
 ## 📞 联系方式
 
-- **Telegram**: @your_telegram_handle
-- **邮箱**: your_email@example.com
+- **Telegram**: @thismanisok (https://t.me/thismanisok)
+- **网站**: 点击任意页面的"联系我们"按钮直接跳转到Telegram
 
 ---
 

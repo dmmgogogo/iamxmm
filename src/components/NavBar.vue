@@ -117,6 +117,8 @@
 </template>
 
 <script>
+import { contactConfig } from '@/config/contact.js'
+
 export default {
   name: 'NavBar',
   data() {
@@ -126,11 +128,12 @@ export default {
   },
   methods: {
     handleContact() {
-      // 可以添加联系方式弹窗或跳转
+      // 直接跳转到Telegram
+      contactConfig.openTelegram()
       this.$message({
-        message: '请通过 Telegram 联系我们：@your_telegram_handle',
-        type: 'info',
-        duration: 3000
+        message: contactConfig.getContactMessage(),
+        type: 'success',
+        duration: 2000
       })
     }
   }
