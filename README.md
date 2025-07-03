@@ -23,6 +23,7 @@
 - ⚡ 实时转发处理
 - 🔒 安全加密传输
 - 📊 管理面板监控
+- 💾 **Windows下载**: 支持直接下载v1.0.11版本
 
 ### 2. Telegram群组下载工具
 - 📥 批量下载媒体文件
@@ -210,6 +211,33 @@ export const analyticsConfig = {
 ### 样式定制
 在 `src/assets/style.css` 中修改全局样式
 在 `tailwind.config.js` 中修改Tailwind配置
+
+## 💾 下载功能配置
+
+### 软件下载设置
+项目支持直接下载Windows版本的Telegram消息转发工具：
+
+**下载地址配置**:
+- 文件路径: `public/assets/download/TG消息转发v1.0.11.rar`
+- 访问URL: `/assets/download/TG消息转发v1.0.11.rar`
+- 下载按钮: 位于首页消息转发产品卡片中
+
+**替换实际软件文件**:
+1. 将实际的软件压缩包文件重命名为 `TG消息转发v1.0.11.rar`
+2. 替换 `public/assets/download/TG消息转发v1.0.11.rar` 文件
+3. 确保文件可以正常访问和下载
+
+**功能特性**:
+- 📊 自动统计下载次数
+- ✨ 下载成功提示
+- 🔄 支持直接下载，无需跳转
+- 📱 兼容所有现代浏览器
+
+**修改下载文件**:
+如需更改下载文件名或版本，需要同时修改：
+- `public/assets/download/` 目录中的文件名
+- `src/views/Home.vue` 中的 `handleDownload()` 方法
+- README.md 中的相关说明
 
 ## 🚀 部署建议
 

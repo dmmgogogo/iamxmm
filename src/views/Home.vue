@@ -55,7 +55,7 @@
                 <svg class="w-8 h-8 mr-3" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
                 </svg>
-                <h3 class="text-xl font-bold">消息转发</h3>
+                <h3 class="text-xl font-bold">群组消息转发</h3>
               </div>
               <p class="text-blue-100">
                 智能的Telegram消息转发工具，支持多群组、多频道之间的自动消息转发
@@ -82,13 +82,20 @@
                   实时转发
                 </li>
               </ul>
-              <el-button 
-                type="primary" 
-                class="w-full btn-gradient"
-                @click="$router.push('/telegram-forward')"
-              >
-                了解更多
-              </el-button>
+              <div class="space-y-3 button-container">
+                <el-button 
+                  class="w-full h-8 btn-gradient flex items-center justify-center font-medium"
+                  @click="$router.push('/telegram-forward')"
+                >
+                  了解更多
+                </el-button>
+                <el-button 
+                  class="w-full h-8 bg-green-500 hover:bg-green-600 text-white flex items-center justify-center font-medium border-0 transition-all duration-300 hover:transform hover:-translate-y-0.5 hover:shadow-lg"
+                  @click="handleDownload(1)"
+                >                  
+                  Windows下载
+                </el-button>
+              </div>
             </div>
           </div>
 
@@ -99,7 +106,7 @@
                 <svg class="w-8 h-8 mr-3" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M3 17a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2zM3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/>
                 </svg>
-                <h3 class="text-xl font-bold">群组下载</h3>
+                <h3 class="text-xl font-bold">群组资源下载</h3>
               </div>
               <p class="text-green-100">
                 批量下载Telegram群组中的文件、图片、视频等媒体内容
@@ -126,13 +133,21 @@
                   支持多种格式
                 </li>
               </ul>
+              <div class="space-y-3 button-container">
               <el-button 
                 type="primary" 
-                class="w-full btn-gradient"
+                class="w-full h-8 btn-gradient flex items-center justify-center font-medium"
                 @click="$router.push('/telegram-download')"
               >
                 了解更多
               </el-button>
+              <el-button 
+                  class="w-full h-8 bg-green-500 hover:bg-green-600 text-white flex items-center justify-center font-medium border-0 transition-all duration-300 hover:transform hover:-translate-y-0.5 hover:shadow-lg"
+                  @click="handleDownload(2)"
+                >                  
+                  Windows下载
+                </el-button>
+            </div>
             </div>
           </div>
 
@@ -143,7 +158,7 @@
                 <svg class="w-8 h-8 mr-3" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
                 </svg>
-                <h3 class="text-xl font-bold">定时发送</h3>
+                <h3 class="text-xl font-bold">TG定制消息</h3>
               </div>
               <p class="text-orange-100">
                 自动化的Telegram消息定时发送工具，支持周期性任务和精确时间控制
@@ -170,13 +185,21 @@
                   多群组支持
                 </li>
               </ul>
+              <div class="space-y-3 button-container">
               <el-button 
                 type="primary" 
-                class="w-full btn-gradient"
+                class="w-full h-8 btn-gradient flex items-center justify-center font-medium"
                 @click="$router.push('/telegram-scheduler')"
               >
                 了解更多
               </el-button>
+              <el-button 
+                  class="w-full h-8 bg-green-500 hover:bg-green-600 text-white flex items-center justify-center font-medium border-0 transition-all duration-300 hover:transform hover:-translate-y-0.5 hover:shadow-lg"
+                  @click="handleDownload(3)"
+                >                  
+                  Windows下载
+                </el-button>
+            </div>
             </div>
           </div>
         </div>
@@ -291,6 +314,36 @@ export default {
         duration: 2000
       })
     },
+    handleDownload(t) {
+      // 追踪下载事件
+      trackEngagement('download_windows_forward')
+      
+      // 直接下载文件
+      let file_name = ''
+      if (t == 1) {
+        file_name = 'TG消息转发v1.0.11.rar'
+      } else if (t == 2) {
+        file_name = 'TG资源下载v1.0.2.rar'
+      } else if (t == 3) {
+        file_name = 'TG消息发送v1.0.15.rar'
+      }
+      const downloadUrl = '/assets/download/' + file_name
+      
+      // 创建下载链接
+      const link = document.createElement('a')
+      link.href = downloadUrl
+      link.download = file_name
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      
+      // 显示下载开始提示
+      this.$message({
+        message: '开始下载...',
+        type: 'success',
+        duration: 2000
+      })
+    },
     initScrollAnimations() {
       const observerOptions = {
         threshold: 0.1,
@@ -327,5 +380,9 @@ export default {
   @apply opacity-100 translate-y-0;
 }
 
+/* 覆盖Element Plus默认按钮间距 */
+.button-container .el-button + .el-button {
+  margin-left: 0 !important;
+}
 
 </style> 
