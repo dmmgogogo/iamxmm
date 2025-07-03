@@ -235,7 +235,7 @@
           </h2>
           
           <div class="space-y-4">
-            <details class="border border-gray-200 rounded-lg">
+            <details class="border border-gray-200 rounded-lg" @toggle="trackFAQToggle('network_access')">
               <summary class="p-4 cursor-pointer font-medium bg-gray-50 hover:bg-gray-100 rounded-lg">
                 🚫 无法访问 my.telegram.org 怎么办？
               </summary>
@@ -250,7 +250,7 @@
               </div>
             </details>
             
-            <details class="border border-gray-200 rounded-lg">
+            <details class="border border-gray-200 rounded-lg" @toggle="trackFAQToggle('forgot_api')">
               <summary class="p-4 cursor-pointer font-medium bg-gray-50 hover:bg-gray-100 rounded-lg">
                 🔄 API ID 和 API Hash 忘记了怎么办？
               </summary>
@@ -259,7 +259,7 @@
               </div>
             </details>
             
-            <details class="border border-gray-200 rounded-lg">
+            <details class="border border-gray-200 rounded-lg" @toggle="trackFAQToggle('activation_code')">
               <summary class="p-4 cursor-pointer font-medium bg-gray-50 hover:bg-gray-100 rounded-lg">
                 💰 如何获取软件激活码？
               </summary>
@@ -301,11 +301,19 @@
 
 <script>
 import { contactConfig } from '@/config/contact.js'
+import { trackContact, trackHelpAction, trackCopyLink } from '@/utils/analytics.js'
 
 export default {
   name: 'Help',
+  mounted() {
+    // 追踪帮助页面访问
+    trackHelpAction('page_view', 'help_main')
+  },
   methods: {
     handleContact() {
+      // 追踪帮助页面的联系事件
+      trackContact('help_page')
+      
       contactConfig.openTelegram()
       this.$message({
         message: contactConfig.getContactMessage(),
@@ -314,6 +322,10 @@ export default {
       })
     },
     copyToClipboard(text) {
+      // 追踪链接复制事件
+      trackCopyLink('api_url')
+      trackHelpAction('copy_link', 'api_registration')
+      
       navigator.clipboard.writeText(text).then(() => {
         this.$message({
           message: '🎉 链接已复制到剪贴板！',
@@ -327,6 +339,10 @@ export default {
           duration: 2000
         })
       })
+    },
+    trackFAQToggle(faqType) {
+      // 追踪FAQ展开/折叠事件
+      trackHelpAction('faq_toggle', faqType)
     }
   }
 }

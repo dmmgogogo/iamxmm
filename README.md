@@ -91,7 +91,10 @@ iamxmm/
 │   │   ├── NavBar.vue     # 导航栏
 │   │   └── Footer.vue     # 页脚
 │   ├── config/            # 配置文件
-│   │   └── contact.js     # 联系方式配置
+│   │   ├── contact.js     # 联系方式配置
+│   │   └── analytics.js   # 统计分析配置
+│   ├── utils/             # 工具函数
+│   │   └── analytics.js   # 统计工具模块
 │   ├── views/             # 页面组件
 │   │   ├── Home.vue       # 首页
 │   │   ├── TelegramForward.vue    # 消息转发页
@@ -180,6 +183,30 @@ export const contactConfig = {
 
 如需修改联系方式，只需修改此配置文件即可，所有页面会自动更新。
 
+### 统计分析配置
+项目已集成Google Analytics 4 (GA4)流量统计功能：
+
+```javascript
+export const analyticsConfig = {
+  measurementId: 'G-XXXXXXXXXX', // 替换为你的测量ID
+  enableInDev: false, // 开发环境是否启用
+  // ... 其他配置
+}
+```
+
+**自动追踪功能**：
+- 📊 页面访问量和用户会话
+- 📞 联系按钮点击事件
+- 🎯 产品页面访问统计
+- 📚 帮助文档使用情况
+- 🎠 轮播图交互行为
+
+**设置方法**：
+1. 访问 [Google Analytics](https://analytics.google.com/) 创建账号
+2. 获取测量ID (格式：G-XXXXXXXXXX)
+3. 修改 `src/config/analytics.js` 中的 `measurementId`
+4. 详细设置请参考 `ANALYTICS_SETUP.md` 文件
+
 ### 样式定制
 在 `src/assets/style.css` 中修改全局样式
 在 `tailwind.config.js` 中修改Tailwind配置
@@ -196,13 +223,28 @@ export const contactConfig = {
 2. 上传 `dist` 目录到托管平台
 3. 配置自定义域名（可选）
 
+## 📊 统计分析功能
+
+项目已集成完整的Google Analytics 4统计功能：
+
+### 🔧 快速启用
+1. 创建Google Analytics账号并获取测量ID
+2. 修改 `src/config/analytics.js` 配置文件
+3. 详细设置请查看 [`ANALYTICS_SETUP.md`](./ANALYTICS_SETUP.md)
+
+### 📈 统计功能
+- ✅ 自动页面访问追踪
+- ✅ 用户行为事件统计
+- ✅ 转化目标监控
+- ✅ 实时数据展示
+- ✅ 自定义事件追踪
+
 ## 📝 待完成功能
 
-1. **图片资源整合**: 将提供的宣传图片放入对应产品页面
-2. **联系表单**: 添加具体的联系表单或联系方式
-3. **SEO优化**: 添加meta标签和结构化数据
-4. **性能优化**: 图片懒加载、代码分割等
-5. **多语言支持**: 国际化配置
+1. **SEO优化**: 添加meta标签和结构化数据
+2. **性能优化**: 图片懒加载、代码分割等
+3. **多语言支持**: 国际化配置
+4. **Cookie同意**: GDPR合规功能
 
 ## 📄 许可证
 

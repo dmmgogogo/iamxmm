@@ -262,19 +262,28 @@
 
 <script>
 import { contactConfig } from '@/config/contact.js'
+import { trackContact, trackEngagement } from '@/utils/analytics.js'
 
 export default {
   name: 'Home',
   mounted() {
     this.initScrollAnimations()
+    // 追踪首页访问
+    trackEngagement('home_page_view')
   },
   methods: {
     scrollToProducts() {
+      // 追踪产品区域滚动
+      trackEngagement('scroll_to_products')
+      
       document.getElementById('products').scrollIntoView({ 
         behavior: 'smooth' 
       })
     },
     handleContact() {
+      // 追踪联系事件
+      trackContact('home_hero')
+      
       contactConfig.openTelegram()
       this.$message({
         message: contactConfig.getContactMessage(),

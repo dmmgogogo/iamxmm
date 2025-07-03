@@ -300,6 +300,7 @@
 
 <script>
 import { contactConfig } from '@/config/contact.js'
+import { trackContact, trackProductView, trackEngagement } from '@/utils/analytics.js'
 
 export default {
   name: 'TelegramForward',
@@ -323,12 +324,17 @@ export default {
   },
   mounted() {
     this.startAutoPlay()
+    // 追踪产品页面访问
+    trackProductView('Telegram消息转发')
   },
   beforeUnmount() {
     this.stopAutoPlay()
   },
   methods: {
     handleContact() {
+      // 追踪联系事件
+      trackContact('telegram_forward_page')
+      
       contactConfig.openTelegram()
       this.$message({
         message: contactConfig.getContactMessage(),
@@ -338,9 +344,13 @@ export default {
     },
     nextSlide() {
       this.currentSlide = (this.currentSlide + 1) % this.slides.length
+      // 追踪轮播图切换
+      trackEngagement('carousel_next', this.currentSlide + 1)
     },
     prevSlide() {
       this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1
+      // 追踪轮播图切换
+      trackEngagement('carousel_prev', this.currentSlide + 1)
     },
     startAutoPlay() {
       this.autoPlayTimer = setInterval(() => {

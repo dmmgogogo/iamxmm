@@ -126,6 +126,7 @@
 
 <script>
 import { contactConfig } from '@/config/contact.js'
+import { trackContact } from '@/utils/analytics.js'
 
 export default {
   name: 'NavBar',
@@ -136,6 +137,9 @@ export default {
   },
   methods: {
     handleContact() {
+      // 追踪联系事件
+      trackContact('navbar')
+      
       // 直接跳转到Telegram
       contactConfig.openTelegram()
       this.$message({
