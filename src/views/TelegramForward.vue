@@ -110,6 +110,36 @@
       </div>
     </section>
 
+    <!-- 实际效果展示 -->
+    <section class="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+            消息转发实际效果展示
+          </h2>
+          <p class="text-lg text-gray-600">
+            看看我们的消息转发工具在实际使用中的强大功能
+          </p>
+        </div>
+        <div>
+          <div class="relative overflow-hidden rounded-2xl shadow-2xl bg-white p-2">
+            <img 
+              src="@/assets/images/tg消息转发截图-1.png" 
+              alt="Telegram消息转发工具实际使用效果展示" 
+              class="ad-image w-full h-auto rounded-xl object-cover hover:scale-105 transition-transform duration-500"
+              style="max-height: 600px;"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end">
+              <div class="p-6 text-white">
+                <h3 class="text-xl font-bold mb-2">消息转发功能演示</h3>
+                <p class="text-white/90">智能转发，多群组同步，高效管理</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 使用场景 -->
     <section class="py-20 bg-gray-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -174,6 +204,36 @@
       </div>
     </section>
 
+    <!-- 功能界面预览 -->
+    <section class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+            管理界面预览
+          </h2>
+          <p class="text-lg text-gray-600">
+            专业的界面设计，让消息转发管理更加便捷
+          </p>
+        </div>
+        <div>
+          <div class="relative overflow-hidden rounded-2xl shadow-2xl bg-gradient-to-br from-blue-50 to-purple-50 p-2">
+            <img 
+              src="@/assets/images/tg消息转发截图-2.png" 
+              alt="Telegram消息转发工具管理界面预览" 
+              class="ad-image w-full h-auto rounded-xl object-cover hover:scale-105 transition-transform duration-500"
+              style="max-height: 600px;"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end">
+              <div class="p-6 text-white">
+                <h3 class="text-xl font-bold mb-2">专业管理界面</h3>
+                <p class="text-white/90">简洁明了，功能齐全，操作便捷</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA区域 -->
     <section class="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
       <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
@@ -220,5 +280,27 @@ export default {
 
 .scenario-card {
   @apply bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300;
+}
+
+/* 广告图片响应式优化 */
+@media (max-width: 768px) {
+  .ad-image {
+    max-height: 400px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .ad-image {
+    max-height: 300px !important;
+  }
+}
+
+/* 图片加载优化 */
+img {
+  @apply transition-all duration-300;
+}
+
+img:hover {
+  @apply shadow-lg;
 }
 </style> 

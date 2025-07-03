@@ -233,7 +233,7 @@
               </svg>
             </div>
             <h3 class="text-lg font-semibold mb-2">专业支持</h3>
-            <p class="text-gray-600">7x24小时技术支持，随时为您服务</p>
+            <p class="text-gray-600">技术牛马，为您服务</p>
           </div>
         </div>
       </div>
@@ -317,4 +317,6 @@ export default {
 .scroll-animate.animate {
   @apply opacity-100 translate-y-0;
 }
+
+
 </style> 
