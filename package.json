@@ -4,9 +4,11 @@
   "description": "个人产品展示网站",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
+    "dev:open": "vite --host --open",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview --host",
+    "preview:open": "vite preview --host --open"
   },
   "dependencies": {
     "vue": "^3.4.0",

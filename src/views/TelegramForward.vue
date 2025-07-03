@@ -21,6 +21,109 @@
       </div>
     </section>
 
+    <!-- 实际效果展示 - 自动轮播 -->
+    <section class="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+            消息转发实际效果展示
+          </h2>
+          <p class="text-lg text-gray-600">
+            看看我们的消息转发工具在实际使用中的强大功能
+          </p>
+        </div>
+        <div class="relative">
+          <!-- 图片轮播容器 -->
+          <div 
+            class="group relative overflow-hidden rounded-2xl shadow-2xl bg-white p-2"
+            @mouseenter="pauseAutoPlay"
+            @mouseleave="resumeAutoPlay"
+          >
+            <div class="carousel-container relative">
+              <!-- 图片1 -->
+              <div 
+                class="carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out"
+                :class="{ 'opacity-100': currentSlide === 0, 'opacity-0': currentSlide !== 0 }"
+              >
+                <img 
+                  src="@/assets/images/tg消息转发截图-1.png" 
+                  alt="Telegram消息转发工具功能演示" 
+                  class="ad-image w-full h-auto rounded-xl object-cover"
+                  style="max-height: 600px;"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end">
+                  <div class="p-6 text-white">
+                    <h3 class="text-xl font-bold mb-2">消息转发功能演示</h3>
+                    <p class="text-white/90">智能转发，多群组同步，高效管理</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 图片2 -->
+              <div 
+                class="carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out"
+                :class="{ 'opacity-100': currentSlide === 1, 'opacity-0': currentSlide !== 1 }"
+              >
+                <img 
+                  src="@/assets/images/tg消息转发截图-2.png" 
+                  alt="Telegram消息转发工具管理界面" 
+                  class="ad-image w-full h-auto rounded-xl object-cover"
+                  style="max-height: 600px;"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end">
+                  <div class="p-6 text-white">
+                    <h3 class="text-xl font-bold mb-2">专业管理界面</h3>
+                    <p class="text-white/90">简洁明了，功能齐全，操作便捷</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 占位元素确保容器高度 -->
+              <img 
+                src="@/assets/images/tg消息转发截图-1.png" 
+                alt="" 
+                class="ad-image w-full h-auto rounded-xl object-cover opacity-0"
+                style="max-height: 600px;"
+              />
+            </div>
+            
+            <!-- 指示器 -->
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+              <button 
+                v-for="(slide, index) in slides" 
+                :key="index"
+                @click="currentSlide = index"
+                class="w-3 h-3 rounded-full transition-all duration-300"
+                :class="{ 
+                  'bg-white shadow-lg': currentSlide === index, 
+                  'bg-white/50 hover:bg-white/75': currentSlide !== index 
+                }"
+              ></button>
+            </div>
+            
+            <!-- 左右切换按钮 -->
+            <button 
+              @click="prevSlide"
+              class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-700 rounded-full p-2 shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+            
+            <button 
+              @click="nextSlide"
+              class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-700 rounded-full p-2 shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 产品特性 -->
     <section class="py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -110,36 +213,6 @@
       </div>
     </section>
 
-    <!-- 实际效果展示 -->
-    <section class="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-            消息转发实际效果展示
-          </h2>
-          <p class="text-lg text-gray-600">
-            看看我们的消息转发工具在实际使用中的强大功能
-          </p>
-        </div>
-        <div>
-          <div class="relative overflow-hidden rounded-2xl shadow-2xl bg-white p-2">
-            <img 
-              src="@/assets/images/tg消息转发截图-1.png" 
-              alt="Telegram消息转发工具实际使用效果展示" 
-              class="ad-image w-full h-auto rounded-xl object-cover hover:scale-105 transition-transform duration-500"
-              style="max-height: 600px;"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end">
-              <div class="p-6 text-white">
-                <h3 class="text-xl font-bold mb-2">消息转发功能演示</h3>
-                <p class="text-white/90">智能转发，多群组同步，高效管理</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- 使用场景 -->
     <section class="py-20 bg-gray-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -204,36 +277,6 @@
       </div>
     </section>
 
-    <!-- 功能界面预览 -->
-    <section class="py-16 bg-white">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-            管理界面预览
-          </h2>
-          <p class="text-lg text-gray-600">
-            专业的界面设计，让消息转发管理更加便捷
-          </p>
-        </div>
-        <div>
-          <div class="relative overflow-hidden rounded-2xl shadow-2xl bg-gradient-to-br from-blue-50 to-purple-50 p-2">
-            <img 
-              src="@/assets/images/tg消息转发截图-2.png" 
-              alt="Telegram消息转发工具管理界面预览" 
-              class="ad-image w-full h-auto rounded-xl object-cover hover:scale-105 transition-transform duration-500"
-              style="max-height: 600px;"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end">
-              <div class="p-6 text-white">
-                <h3 class="text-xl font-bold mb-2">专业管理界面</h3>
-                <p class="text-white/90">简洁明了，功能齐全，操作便捷</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- CTA区域 -->
     <section class="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
       <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
@@ -260,6 +303,30 @@ import { contactConfig } from '@/config/contact.js'
 
 export default {
   name: 'TelegramForward',
+  data() {
+    return {
+      currentSlide: 0,
+      slides: [
+        {
+          src: '@/assets/images/tg消息转发截图-1.png',
+          title: '消息转发功能演示',
+          description: '智能转发，多群组同步，高效管理'
+        },
+        {
+          src: '@/assets/images/tg消息转发截图-2.png',
+          title: '专业管理界面',
+          description: '简洁明了，功能齐全，操作便捷'
+        }
+      ],
+      autoPlayTimer: null
+    }
+  },
+  mounted() {
+    this.startAutoPlay()
+  },
+  beforeUnmount() {
+    this.stopAutoPlay()
+  },
   methods: {
     handleContact() {
       contactConfig.openTelegram()
@@ -268,6 +335,31 @@ export default {
         type: 'success',
         duration: 2000
       })
+    },
+    nextSlide() {
+      this.currentSlide = (this.currentSlide + 1) % this.slides.length
+    },
+    prevSlide() {
+      this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1
+    },
+    startAutoPlay() {
+      this.autoPlayTimer = setInterval(() => {
+        this.nextSlide()
+      }, 4000) // 每4秒切换一次
+    },
+    stopAutoPlay() {
+      if (this.autoPlayTimer) {
+        clearInterval(this.autoPlayTimer)
+        this.autoPlayTimer = null
+      }
+    },
+    // 鼠标悬停时暂停自动播放
+    pauseAutoPlay() {
+      this.stopAutoPlay()
+    },
+    // 鼠标离开时恢复自动播放
+    resumeAutoPlay() {
+      this.startAutoPlay()
     }
   }
 }
@@ -280,6 +372,16 @@ export default {
 
 .scenario-card {
   @apply bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300;
+}
+
+/* 轮播图样式 */
+.carousel-container {
+  min-height: 300px;
+}
+
+.carousel-slide {
+  width: 100%;
+  height: 100%;
 }
 
 /* 广告图片响应式优化 */
@@ -302,5 +404,10 @@ img {
 
 img:hover {
   @apply shadow-lg;
+}
+
+/* 轮播按钮悬停效果 */
+.group:hover .opacity-0 {
+  opacity: 1;
 }
 </style> 

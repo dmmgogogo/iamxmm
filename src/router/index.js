@@ -33,6 +33,14 @@ const routes = [
     meta: {
       title: 'Telegram定时发送 - iamxmm'
     }
+  },
+  {
+    path: '/help',
+    name: 'Help',
+    component: () => import('@/views/Help.vue'),
+    meta: {
+      title: '使用帮助 - iamxmm'
+    }
   }
 ]
 

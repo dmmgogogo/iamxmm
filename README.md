@@ -96,7 +96,8 @@ iamxmm/
 │   │   ├── Home.vue       # 首页
 │   │   ├── TelegramForward.vue    # 消息转发页
 │   │   ├── TelegramDownload.vue   # 群组下载页
-│   │   └── TelegramScheduler.vue  # 定时发送页
+│   │   ├── TelegramScheduler.vue  # 定时发送页
+│   │   └── Help.vue       # 使用帮助页
 │   ├── router/            # 路由配置
 │   ├── App.vue            # 根组件
 │   └── main.js            # 入口文件
@@ -119,12 +120,20 @@ iamxmm/
 - `/telegram-forward` - 消息转发工具详情
 - `/telegram-download` - 群组下载工具详情  
 - `/telegram-scheduler` - 定时发送工具详情
+- `/help` - 使用帮助文档
 
 每个产品页面包含：
 - Hero区域：产品介绍
 - 功能特性：详细功能说明
 - 使用场景：实际应用案例
 - CTA区域：联系转化
+
+### 帮助页面 (/help)
+- 📚 完整的新手指南
+- 🔗 Telegram API注册步骤
+- ⚙️ 环境配置详细说明
+- ❓ 常见问题解答
+- 📞 技术支持联系方式
 
 ## 🎨 样式系统
 

@@ -42,6 +42,14 @@
             >
               定时发送
             </router-link>
+
+            <router-link 
+              to="/help" 
+              class="nav-link"
+              active-class="text-primary-600"
+            >
+              帮助❓
+            </router-link>
           </div>
         </div>
 
