@@ -319,30 +319,54 @@ export default {
       trackEngagement('download_windows_forward')
       
       // 直接下载文件
-      let file_name = ''
-      if (t == 1) {
-        file_name = 'TG消息转发v1.0.11.rar'
-      } else if (t == 2) {
-        file_name = 'TG资源下载v1.0.2.rar'
-      } else if (t == 3) {
-        file_name = 'TG消息发送v1.0.15.rar'
-      }
-      const downloadUrl = '/assets/download/' + file_name
-      
-      // 创建下载链接
-      const link = document.createElement('a')
-      link.href = downloadUrl
-      link.download = file_name
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-      
-      // 显示下载开始提示
-      this.$message({
-        message: '开始下载...',
-        type: 'success',
-        duration: 2000
-      })
+             let file_name = ''
+       if (t == 1) {
+         file_name = 'TG消息转发v1.0.11.rar'
+       } else if (t == 2) {
+         file_name = 'TG资源下载v1.0.2.zip'
+       } else if (t == 3) {
+         file_name = 'TG消息发送v1.0.15.rar'
+       }
+                    const downloadUrl = import.meta.env.BASE_URL + 'assets/download/' + file_name
+       
+       // 调试信息（生产环境可以移除）
+       console.log('Base URL:', import.meta.env.BASE_URL)
+       console.log('Download URL:', downloadUrl)
+       
+       // 先检查文件是否存在
+       fetch(downloadUrl, { method: 'HEAD' })
+         .then(response => {
+           if (response.ok) {
+             // 文件存在，开始下载
+             const link = document.createElement('a')
+             link.href = downloadUrl
+             link.download = file_name
+             document.body.appendChild(link)
+             link.click()
+             document.body.removeChild(link)
+             
+             this.$message({
+               message: '开始下载...',
+               type: 'success',
+               duration: 2000
+             })
+           } else {
+             throw new Error('文件不存在')
+           }
+         })
+         .catch(error => {
+           console.error('下载失败:', error)
+           this.$message({
+             message: `下载失败: ${error.message}。请联系我们获取下载链接`,
+             type: 'error',
+             duration: 4000
+           })
+           
+           // 如果下载失败，引导用户联系
+           setTimeout(() => {
+             contactConfig.openTelegram()
+           }, 2000)
+         })
     },
     initScrollAnimations() {
       const observerOptions = {
