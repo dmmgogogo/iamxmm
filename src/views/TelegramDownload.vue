@@ -26,10 +26,10 @@
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
           <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-            消息转发实际效果展示
+            群组下载实际效果展示
           </h2>
           <p class="text-lg text-gray-600">
-            看看我们的消息转发工具在实际使用中的强大功能
+            看看我们的群组下载工具在实际使用中的强大功能
           </p>
         </div>
         <div class="relative">
@@ -47,13 +47,13 @@
               >
                 <img 
                   src="@/assets/images/tg资源下载截图-1.png" 
-                  alt="Telegram消息转发工具功能演示" 
+                  alt="Telegram群组下载工具功能演示" 
                   class="ad-image w-full h-auto rounded-xl object-cover"
                   style="max-height: 600px;"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end">
                   <div class="p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2">资源下载功能演示</h3>
+                    <h3 class="text-xl font-bold mb-2">群组下载功能演示</h3>
                     <p class="text-white/90">批量下载，智能分类，高效管理</p>
                   </div>
                 </div>
@@ -66,13 +66,13 @@
               >
                 <img 
                   src="@/assets/images/tg资源下载截图-2.png" 
-                  alt="Telegram消息转发工具管理界面" 
+                  alt="Telegram群组下载工具管理界面" 
                   class="ad-image w-full h-auto rounded-xl object-cover"
                   style="max-height: 600px;"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end">
                   <div class="p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2">专业管理界面</h3>
+                    <h3 class="text-xl font-bold mb-2">下载管理界面</h3>
                     <p class="text-white/90">简洁明了，功能齐全，操作便捷</p>
                   </div>
                 </div>
@@ -249,6 +249,30 @@ import { contactConfig } from '@/config/contact.js'
 
 export default {
   name: 'TelegramDownload',
+  data() {
+    return {
+      currentSlide: 0,
+      autoPlayInterval: null,
+      slides: [
+        {
+          image: '@/assets/images/tg资源下载截图-1.png',
+          title: '群组下载功能演示',
+          description: '批量下载，智能分类，高效管理'
+        },
+        {
+          image: '@/assets/images/tg资源下载截图-2.png',
+          title: '下载管理界面',
+          description: '简洁明了，功能齐全，操作便捷'
+        }
+      ]
+    }
+  },
+  mounted() {
+    this.startAutoPlay()
+  },
+  beforeUnmount() {
+    this.stopAutoPlay()
+  },
   methods: {
     handleContact() {
       contactConfig.openTelegram()
@@ -257,6 +281,29 @@ export default {
         type: 'success',
         duration: 2000
       })
+    },
+    startAutoPlay() {
+      this.autoPlayInterval = setInterval(() => {
+        this.nextSlide()
+      }, 4000)
+    },
+    stopAutoPlay() {
+      if (this.autoPlayInterval) {
+        clearInterval(this.autoPlayInterval)
+        this.autoPlayInterval = null
+      }
+    },
+    pauseAutoPlay() {
+      this.stopAutoPlay()
+    },
+    resumeAutoPlay() {
+      this.startAutoPlay()
+    },
+    nextSlide() {
+      this.currentSlide = (this.currentSlide + 1) % this.slides.length
+    },
+    prevSlide() {
+      this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1
     }
   }
 }
