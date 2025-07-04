@@ -93,7 +93,7 @@
                   class="w-full h-8 bg-green-500 hover:bg-green-600 text-white flex items-center justify-center font-medium border-0 transition-all duration-300 hover:transform hover:-translate-y-0.5 hover:shadow-lg"
                   @click="handleDownload(1)"
                 >                  
-                  Windows下载
+                  Windows下载 🎉🎉🎉
                 </el-button>
               </div>
             </div>
@@ -145,7 +145,7 @@
                   class="w-full h-8 bg-green-500 hover:bg-green-600 text-white flex items-center justify-center font-medium border-0 transition-all duration-300 hover:transform hover:-translate-y-0.5 hover:shadow-lg"
                   @click="handleDownload(2)"
                 >                  
-                  Windows下载
+                  Windows下载 🎉🎉🎉
                 </el-button>
             </div>
             </div>
@@ -197,7 +197,7 @@
                   class="w-full h-8 bg-green-500 hover:bg-green-600 text-white flex items-center justify-center font-medium border-0 transition-all duration-300 hover:transform hover:-translate-y-0.5 hover:shadow-lg"
                   @click="handleDownload(3)"
                 >                  
-                  Windows下载
+                  Windows下载 🎉🎉🎉
                 </el-button>
             </div>
             </div>

@@ -47,18 +47,6 @@
           </div>
 
           <div class="feature-card">
-            <div class="text-blue-600 mb-4">
-              <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold mb-3">智能分类</h3>
-            <p class="text-gray-600">
-              自动按文件类型、发送时间、发送人等条件分类整理下载的文件
-            </p>
-          </div>
-
-          <div class="feature-card">
             <div class="text-purple-600 mb-4">
               <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2zM3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
@@ -82,29 +70,6 @@
             </p>
           </div>
 
-          <div class="feature-card">
-            <div class="text-red-600 mb-4">
-              <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold mb-3">断点续传</h3>
-            <p class="text-gray-600">
-              支持断点续传功能，网络中断后可继续下载，避免重复下载
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="text-indigo-600 mb-4">
-              <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold mb-3">筛选下载</h3>
-            <p class="text-gray-600">
-              可设置文件大小、时间范围、文件类型等筛选条件，精准下载所需内容
-            </p>
-          </div>
         </div>
       </div>
     </section>
@@ -128,7 +93,7 @@
             </div>
             <h3 class="text-xl font-bold mb-4">添加群组</h3>
             <p class="text-gray-600">
-              输入要下载的Telegram群组链接或邀请码，工具会自动识别群组信息
+              选择要下载的Telegram群组
             </p>
           </div>
 
@@ -138,7 +103,7 @@
             </div>
             <h3 class="text-xl font-bold mb-4">设置条件</h3>
             <p class="text-gray-600">
-              根据需要设置下载条件，如文件类型、时间范围、文件大小等筛选条件
+              设置下载条件，如文件类型、时间范围、文件大小等（待开发）
             </p>
           </div>
 
@@ -148,7 +113,7 @@
             </div>
             <h3 class="text-xl font-bold mb-4">开始下载</h3>
             <p class="text-gray-600">
-              点击开始下载，工具会自动扫描群组并下载符合条件的所有媒体文件
+              开始下载，工具会自动扫描群组并下载
             </p>
           </div>
         </div>
